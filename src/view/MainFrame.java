@@ -1,8 +1,10 @@
+package view;
+
 import javax.swing.*;
 import java.io.IOException;
 
 public class MainFrame extends JFrame {
-    MainFrame() throws IOException {
+    public MainFrame() throws IOException {
         initComponents();
     }
 

@@ -1,3 +1,5 @@
+package view;
+
 public class ArticleCategory {
     final String[] categories = new String[1];
 

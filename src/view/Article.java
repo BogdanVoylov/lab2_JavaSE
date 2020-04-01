@@ -1,3 +1,5 @@
+package view;
+
 class Article {
     String name;
     int price;
