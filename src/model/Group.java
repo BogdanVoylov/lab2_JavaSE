@@ -1,5 +1,6 @@
 package model;
 import java.util.HashSet;
+import java.util.Iterator;
 
 public class Group {
     private String name;
@@ -20,6 +21,9 @@ public class Group {
     public ISetModifier<Product> getProductsModifier(){
         return new ProductsModifier();
     }
+    public Iterator<Product> getIterator(){
+        return products.iterator();
+    }
 
     private class ProductsModifier implements ISetModifier<Product> {
 
@@ -31,7 +35,7 @@ public class Group {
         @Override
         public void remove(String name) {
             try {
-                products.remove(new Product(name,0,0));
+                products.remove(new Product(name,"",0,0));
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -43,4 +47,5 @@ public class Group {
             products.add(newProduct);
         }
     }
+
 }

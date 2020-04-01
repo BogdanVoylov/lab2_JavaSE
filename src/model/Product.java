@@ -3,6 +3,16 @@ package model;
 public class Product {
     private String name;
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    private String description;
+
     public int getCount() {
         return count;
     }
@@ -13,11 +23,12 @@ public class Product {
 
     private int price;
     private int count;
-    public Product(String name, int price, int count) throws Exception {
-        this.name = name;
+    public Product(String name, String description, int price, int count) throws Exception {
         if(count < 0 || price < 0){
             throw new Exception();
         }
+        this.name = name;
+        this.description = description;
         this.price = price;
         this.count = count;
     }
