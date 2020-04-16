@@ -14,7 +14,12 @@ public class MultipleGroupsReaderWriter {
     }
 
     public static void appendGroups(File file, List<Group> groups) throws IOException, ClassNotFoundException {
-        List<Group> existing = readGroups(file);
+        List<Group> existing = new ArrayList<>();
+        try {
+            existing = readGroups(file);
+        }catch (Exception e){
+
+        }
         existing.addAll(groups);
         overwriteGroups(file,existing);
     }
