@@ -4,19 +4,18 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MultipleGroupsReader {
-    public List<Group> readGroups(File file) throws FileNotFoundException {
-        List<Group> res = new ArrayList<>();
-        FileInputStream fileInputStream = new FileInputStream(file);
-        while (true){
-            try(ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream)){
-                res.add((Group) objectInputStream.readObject());
-            } catch (IOException e) {
-                e.printStackTrace();
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
-            }
-        }
-        return res;
+public class MultipleGroupsReaderWriter {
+    public static List<Group> readGroups(File file) throws IOException, ClassNotFoundException {
+        return  (List<Group>) new ObjectInputStream(new FileInputStream(file)).readObject();
+    }
+
+    public static void overwriteGroups(File file, List<Group> groups) throws IOException {
+        new ObjectOutputStream(new FileOutputStream(file)).writeObject(groups);
+    }
+
+    public static void appendGroups(File file, List<Group> groups) throws IOException, ClassNotFoundException {
+        List<Group> existing = readGroups(file);
+        existing.addAll(groups);
+        overwriteGroups(file,existing);
     }
 }

@@ -1,4 +1,4 @@
-package view;
+package com.company.view;
 
 class Article {
     String name;

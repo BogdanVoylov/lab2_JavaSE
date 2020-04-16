@@ -1,6 +1,8 @@
-package model;
+package com.company.model;
 
-public class Product {
+import java.io.Serializable;
+
+public class Product implements Serializable {
     private String name;
 
     public String getDescription() {
@@ -43,6 +45,10 @@ public class Product {
 
     public int getPrice() {
         return price;
+    }
+
+    public int getWholePrice(){
+        return price*count;
     }
 
     public void setPrice(int price) {

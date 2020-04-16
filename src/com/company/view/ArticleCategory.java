@@ -1,4 +1,4 @@
-package view;
+package com.company.view;
 
 public class ArticleCategory {
     final String[] categories = new String[1];

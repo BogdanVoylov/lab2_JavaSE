@@ -1,10 +1,14 @@
-import java.io.IOException;
+package com.company;
+import java.io.*;
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
-import model.Group;
-import model.ISetModifier;
-import model.Product;
-import view.MainFrame;
+import com.company.model.Group;
+import com.company.model.ISetModifier;
+import com.company.model.MultipleGroupsReaderWriter;
+import com.company.model.Product;
+
 public class Main {
     public static void main(String[] args) throws IOException {
         /*MainFrame mainFrame = new MainFrame();
@@ -18,6 +22,11 @@ public class Main {
                 Product product = it.next();
                 System.out.println(product.getName());
             }
+            List<Group> groups = new ArrayList<>();
+            groups.add(group);
+            MultipleGroupsReaderWriter.appendGroups(new File("test.dat"), groups);
+            groups = MultipleGroupsReaderWriter.readGroups(new File("test.dat"));
+            System.out.println("kek");
         } catch (Exception e) {
             e.printStackTrace();
         }
