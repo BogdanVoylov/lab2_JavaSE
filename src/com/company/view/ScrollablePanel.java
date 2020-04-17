@@ -27,12 +27,13 @@ class ScrollablePanel extends JPanel implements Scrollable {
             return getSize();
         Dimension d = getParent().getSize();
         int width = d.width;
-        if (width == 0){
+        if (width == 0) {
             width = 800;
         }
-        int columns = (int) Math.floor((width-horizontalGap)/(horizontalGap+cardWidth));
-        int rows = (int) Math.ceil(cardQuantity/columns);
-        return new Dimension(d.width, verticalGap+rows*(verticalGap+cardHeight));
+        int columns = (int) Math.floor((width - horizontalGap) / (horizontalGap + cardWidth));
+        if (columns == 0) columns = 1;
+        int rows = (int) Math.ceil(cardQuantity / columns);
+        return new Dimension(d.width, verticalGap + rows * (verticalGap + cardHeight));
     }
 
     public int getScrollableBlockIncrement(Rectangle visibleRect,

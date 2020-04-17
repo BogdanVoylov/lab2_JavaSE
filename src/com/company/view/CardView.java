@@ -1,66 +1,83 @@
 package com.company.view;
 
+import com.company.Main;
+import com.company.model.Group;
+import com.company.model.MultipleGroupsReaderWriter;
+import com.company.model.Product;
+import org.w3c.dom.events.Event;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
+import java.beans.EventHandler;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.EventListener;
 
 public class CardView extends javax.swing.JPanel {
 
-    public CardView(Article article) throws IOException {
-        initComponents(article);
+    public CardView(Group group) throws IOException {
+        initComponents(group);
     }
 
-    private void initComponents(Article article) throws IOException {
-        BufferedImage myPicture = ImageIO.read(new File(article.articleLink));
-        jLabel1 = new javax.swing.JLabel(new ImageIcon(myPicture));
-        jButton1 = new javax.swing.JButton();
-        jButton1.setText("Delete");
+    private void initComponents(Group group) throws IOException {
+        //uncomment this when finished testing
+//        BufferedImage myPicture = ImageIO.read(new File(group.getPhotoLink()));
+        BufferedImage myPicture = ImageIO.read(new File("C:\\Users\\Lenovo\\Desktop\\grechka.jpg"));
+        imageLabel = new javax.swing.JLabel(new ImageIcon(myPicture));
         jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
 
         setPreferredSize(new java.awt.Dimension(220, 170));
-
-
-
-        jTextField1.setBackground(new java.awt.Color(240, 240, 240));
-        jTextField1.setText(article.name);
+        setBackground(new java.awt.Color(204, 204, 204));
+        jTextField1.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
+        jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField1.setBackground(new java.awt.Color(204, 204, 204));
+        jTextField1.setText(group.getName());
         jTextField1.setBorder(null);
+        System.out.println("deb: name:"+group.getName());
 
-        jTextField2.setBackground(new java.awt.Color(240, 240, 240));
-        jTextField2.setText("Price:"+article.price);
-        jTextField2.setBorder(null);
+        jTextField1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (!jTextField1.getText().equals(group.getName())) {
+                    int reply = JOptionPane.showConfirmDialog(null, "Do you want to rename a group", "Change confirmation", JOptionPane.YES_NO_OPTION);
+                    if (reply == JOptionPane.YES_OPTION) {
+                        group.setName(jTextField1.getText());
+                        try {
+                            MultipleGroupsReaderWriter.overwriteGroups(new File(Main.filepath), Main.groups);
+                        } catch (IOException ex) {
+                            JOptionPane.showMessageDialog(null, "Error occurred while saving a file*");
+                        }
+                    }
+                }
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
+        this.
+
+                setLayout(layout);
         layout.setHorizontalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(imageLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
                         .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createSequentialGroup()
-                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
+                                .addGap(23, 23, 23)
+                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
+                                .addGap(18, 18, 18)
+                                .addComponent(imageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }
 
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel imageLabel;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-
 }

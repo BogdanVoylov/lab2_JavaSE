@@ -7,16 +7,27 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Group implements Serializable {
+    private static final long serialVersionUID = -2772406316807560219L;
     private String name;
     private HashSet<Product> products;
+    private String photoLink;
 
-    public Group(String name) {
+    public Group(String name, String photoLink) {
         this.name = name;
         products = new HashSet<Product>();
+        this.photoLink = photoLink;
     }
 
     public String getName() {
         return name;
+    }
+
+    public String getPhotoLink() {
+        return photoLink;
+    }
+
+    public void setPhotoLink(String photoLink) {
+        this.photoLink = photoLink;
     }
 
     public void setName(String name) {

@@ -1,7 +1,12 @@
 package com.company.view;
 
+import com.company.model.Group;
+
 import javax.swing.*;
+import javax.swing.event.MenuListener;
+import java.awt.*;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class MainFrame extends JFrame {
     public MainFrame() throws IOException {
@@ -20,13 +25,14 @@ public class MainFrame extends JFrame {
         setPreferredSize(new java.awt.Dimension(800, 600));
         setSize(new java.awt.Dimension(800, 600));
 
-
+        this.setLayout(new FlowLayout());
         jMenuBar1.setBorder(null);
         jMenuBar1.setMinimumSize(new java.awt.Dimension(64, 30));
         jMenuBar1.setPreferredSize(new java.awt.Dimension(64, 30));
 
         jMenu1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jMenu1.setText("Open file");
+        jMenu1.addMenuListener(new CustomMenuListener());
         jMenu1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jMenuBar1.add(jMenu1);
 
@@ -35,14 +41,8 @@ public class MainFrame extends JFrame {
         jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
-        Article[] articles = new Article[100];
-        for (int i =0; i<100; i++){
-            articles[i] = new Article("Grechka", 40, "Usual grechka", new ArticleCategory().getCategory(), "C:/Users/Lenovo/Desktop/grechka.jpg");
-        }
-
-        kk1 = new ObjectsPannel(articles);
-        this.setContentPane(kk1);
-        pack();
+        revalidate();
+        repaint();
     }
 
     private javax.swing.JMenu jMenu1;

@@ -1,23 +1,26 @@
 package com.company.view;
 
+import com.company.model.Group;
+
 import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class ObjectsPannel extends JPanel {
 
-    public ObjectsPannel(Article[] articles) throws IOException {
-        initComponents(articles);
+    public ObjectsPannel(ArrayList<Group> groups) throws IOException {
+        initComponents(groups);
     }
 
-    private void initComponents(Article[] articles) throws IOException {
+    private void initComponents(ArrayList<Group> groups) throws IOException {
         this.setLayout(new CardLayout());
         this.setPreferredSize(new Dimension(800,600));
         setBackground(new java.awt.Color(255, 102, 102));
-        JPanel container = new ScrollablePanel(articles.length, 220,170, 10,10);
-        container.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 10));
-        for (int i = 0; i < articles.length; i++) {
-            CardView cv = new CardView(articles[i]);
+        JPanel container = new ScrollablePanel(groups.size(), 220,170, 20 ,20);
+        container.setLayout(new FlowLayout(FlowLayout.CENTER, 20, 20));
+        for (Group group : groups) {
+            CardView cv = new CardView(group);
             container.add(cv);
         }
 
