@@ -25,7 +25,6 @@ public class CustomMenuListener implements MenuListener {
             try {
                 groups = MultipleGroupsReaderWriter.readGroups(jfc.getSelectedFile());
                 Main.groups = (ArrayList<Group>) groups;
-                System.out.println(groups);
                 filepath = jfc.getSelectedFile().getAbsolutePath();
                 Main.filepath = filepath;
             } catch (IOException | ClassNotFoundException ex) {
@@ -34,7 +33,6 @@ public class CustomMenuListener implements MenuListener {
                 return;
             }
             ObjectsPannel kk1 = null;
-            //works on custom data i suppose that mistake is in data
             try {
                 kk1 = new ObjectsPannel((ArrayList<Group>) groups);
             } catch (IOException ex) {

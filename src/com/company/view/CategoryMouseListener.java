@@ -1,4 +1,31 @@
 package com.company.view;
 
-public class CategoryMouseListener {
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+
+public class CategoryMouseListener implements MouseListener {
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        System.out.println("GGG");
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+
+    }
 }

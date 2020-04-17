@@ -10,6 +10,7 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.beans.EventHandler;
 import java.io.File;
@@ -25,8 +26,8 @@ public class CardView extends javax.swing.JPanel {
 
     private void initComponents(Group group) throws IOException {
         //uncomment this when finished testing
-//        BufferedImage myPicture = ImageIO.read(new File(group.getPhotoLink()));
-        BufferedImage myPicture = ImageIO.read(new File("C:\\Users\\Lenovo\\Desktop\\grechka.jpg"));
+        BufferedImage myPicture = ImageIO.read(new File(group.getPhotoLink()));
+        // BufferedImage myPicture = ImageIO.read(new File("C:\\Users\\Lenovo\\Desktop\\grechka.jpg"));
         imageLabel = new javax.swing.JLabel(new ImageIcon(myPicture));
         jTextField1 = new javax.swing.JTextField();
 
@@ -37,7 +38,6 @@ public class CardView extends javax.swing.JPanel {
         jTextField1.setBackground(new java.awt.Color(204, 204, 204));
         jTextField1.setText(group.getName());
         jTextField1.setBorder(null);
-        System.out.println("deb: name:"+group.getName());
 
         jTextField1.addActionListener(new ActionListener() {
             @Override
@@ -57,9 +57,7 @@ public class CardView extends javax.swing.JPanel {
         });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.
-
-                setLayout(layout);
+        this.setLayout(layout);
         layout.setHorizontalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(imageLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
@@ -76,6 +74,11 @@ public class CardView extends javax.swing.JPanel {
                                 .addGap(18, 18, 18)
                                 .addComponent(imageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
+    }
+
+    @Override
+    public synchronized void addMouseListener(MouseListener l) {
+
     }
 
     private javax.swing.JLabel imageLabel;
