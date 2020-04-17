@@ -11,11 +11,11 @@ public class Group implements Serializable {
     private static final long serialVersionUID = -2772406316807560219L;
     private String name;
     private HashSet<Product> products;
-    private BufferedImage image;
+    private BufferedImageWrapper image;
 
     public Group(String name, BufferedImage image) {
         this(name);
-        this.image = image;
+        this.image = new BufferedImageWrapper(image);
     }
 
     public Group(String name){
@@ -28,11 +28,11 @@ public class Group implements Serializable {
     }
 
     public BufferedImage getImage() {
-        return image;
+        return image.getImage();
     }
 
     public void setImage(BufferedImage bufferedImage) {
-        this.image = bufferedImage;
+        image.setImage(bufferedImage);
     }
 
     public void setName(String name) {
