@@ -1,5 +1,6 @@
 package com.company.model;
 
+import java.awt.image.BufferedImage;
 import java.io.*;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -10,24 +11,23 @@ public class Group implements Serializable {
     private static final long serialVersionUID = -2772406316807560219L;
     private String name;
     private HashSet<Product> products;
-    private String photoLink;
+    private BufferedImage image;
 
-    public Group(String name, String photoLink) {
+    public Group(String name, BufferedImage read) {
         this.name = name;
         products = new HashSet<Product>();
-        this.photoLink = photoLink;
     }
 
     public String getName() {
         return name;
     }
 
-    public String getPhotoLink() {
-        return photoLink;
+    public BufferedImage getImage() {
+        return image;
     }
 
-    public void setPhotoLink(String photoLink) {
-        this.photoLink = photoLink;
+    public void setImage(BufferedImage bufferedImage) {
+        this.image = bufferedImage;
     }
 
     public void setName(String name) {

@@ -26,7 +26,7 @@ public class CardView extends javax.swing.JPanel {
     private void initComponents(Group group) throws IOException {
         //uncomment this when finished testing
 //        BufferedImage myPicture = ImageIO.read(new File(group.getPhotoLink()));
-        BufferedImage myPicture = ImageIO.read(new File("C:\\Users\\Lenovo\\Desktop\\grechka.jpg"));
+        BufferedImage myPicture = group.getImage();
         imageLabel = new javax.swing.JLabel(new ImageIcon(myPicture));
         jTextField1 = new javax.swing.JTextField();
 
