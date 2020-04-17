@@ -33,16 +33,15 @@ class ScrollablePanel extends JPanel implements Scrollable {
         int columns = (int) Math.floor((width - horizontalGap) / (horizontalGap + cardWidth));
         if (columns == 0) columns = 1;
         int rows = (int) Math.ceil(cardQuantity / columns);
+        if (rows == 0) rows = 1;
         return new Dimension(d.width, verticalGap + rows * (verticalGap + cardHeight));
     }
 
-    public int getScrollableBlockIncrement(Rectangle visibleRect,
-                                           int orientation, int direction) {
+    public int getScrollableBlockIncrement(Rectangle visibleRect, int orientation, int direction) {
         return 50;
     }
 
-    public int getScrollableUnitIncrement(Rectangle visibleRect, int orientation,
-                                          int direction) {
+    public int getScrollableUnitIncrement(Rectangle visibleRect, int orientation, int direction) {
         return 10;
     }
 

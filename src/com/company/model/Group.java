@@ -14,17 +14,13 @@ public class Group implements Serializable {
     private BufferedImageWrapper image;
 
     public Group(String name, BufferedImage image) {
-<<<<<<< HEAD
-=======
-        this(name);
+        this.name = name;
+        products = new HashSet<Product>();
         this.image = new BufferedImageWrapper(image);
     }
 
-    public Group(String name){
->>>>>>> 7c851108db5b0925a3ec7c01f5d126f6bcf77776
-        this.name = name;
-        products = new HashSet<Product>();
-        this.image = image;
+    public void setProducts(HashSet<Product> products) {
+        this.products = products;
     }
 
     public String getName() {
@@ -33,6 +29,10 @@ public class Group implements Serializable {
 
     public BufferedImage getImage() {
         return image.getImage();
+    }
+
+    public HashSet<Product> getProducts() {
+        return products;
     }
 
     public void setImage(BufferedImage bufferedImage) {

@@ -32,13 +32,14 @@ public class CustomMenuListener implements MenuListener {
                 JOptionPane.showMessageDialog(null, "Invalid file");
                 return;
             }
-            ObjectsPannel kk1 = null;
+            ObjectsPannel kk = null;
             try {
-                kk1 = new ObjectsPannel((ArrayList<Group>) groups);
+                kk = new ObjectsPannel((ArrayList<Group>) groups);
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
-            Main.mainFrame.add(kk1);
+            Main.mainFrame.setContentPane(kk);
+            MainFrame.jMenu3.setEnabled(true);
             Main.mainFrame.revalidate();
             Main.mainFrame.repaint();
         }

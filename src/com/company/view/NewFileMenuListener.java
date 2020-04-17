@@ -16,14 +16,17 @@ import java.util.List;
 public class NewFileMenuListener implements MenuListener {
     @Override
     public void menuSelected(MenuEvent e) {
-
         ArrayList<Group> groups = new ArrayList<Group>();
-        String filepath = new File(Main.class.getProtectionDomain().getCodeSource().getLocation().getPath() +
-                JOptionPane.showInputDialog("Input your database name")).getAbsolutePath();
+        String filepath = new File(JOptionPane.showInputDialog("Input your database name") + ".dat").getAbsolutePath();
+        System.out.println(filepath);
         Main.groups = groups;
         Main.filepath = filepath;
-
-
+        JPanel panel = new JPanel();
+        panel.add(new JLabel("Database created, now you can add a category"));
+        Main.mainFrame.setContentPane(panel);
+        MainFrame.jMenu3.setEnabled(true);
+        Main.mainFrame.revalidate();
+        Main.mainFrame.repaint();
     }
 
 

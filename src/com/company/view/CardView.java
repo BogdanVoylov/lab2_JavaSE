@@ -4,12 +4,14 @@ import com.company.Main;
 import com.company.model.Group;
 import com.company.model.MultipleGroupsReaderWriter;
 import com.company.model.Product;
+import com.company.view.TableClasses.Form;
 import org.w3c.dom.events.Event;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.beans.EventHandler;
@@ -24,14 +26,7 @@ public class CardView extends javax.swing.JPanel {
         initComponents(group);
     }
 
-<<<<<<< HEAD
-    private void initComponents(Group group) {
-=======
     private void initComponents(Group group) throws IOException {
-        //uncomment this when finished testing
-        // BufferedImage myPicture = ImageIO.read(new File("C:\\Users\\Lenovo\\Desktop\\grechka.jpg"));
-//        BufferedImage myPicture = ImageIO.read(new File(group.getPhotoLink()));
->>>>>>> 7c851108db5b0925a3ec7c01f5d126f6bcf77776
         BufferedImage myPicture = group.getImage();
         imageLabel = new javax.swing.JLabel(new ImageIcon(myPicture));
         jTextField1 = new javax.swing.JTextField();
@@ -79,11 +74,40 @@ public class CardView extends javax.swing.JPanel {
                                 .addGap(18, 18, 18)
                                 .addComponent(imageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
-    }
 
-    @Override
-    public synchronized void addMouseListener(MouseListener l) {
+        addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                Form form = null;
+                try {
+                    form = new Form(group.getName(), 600, 600, group);
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+                assert form != null;
+                form.setVisible(true);
+            }
 
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+
+            }
+        });
     }
 
     private javax.swing.JLabel imageLabel;

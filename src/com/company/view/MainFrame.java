@@ -1,5 +1,6 @@
 package com.company.view;
 
+import com.company.Main;
 import com.company.model.Group;
 
 import javax.swing.*;
@@ -19,6 +20,7 @@ public class MainFrame extends JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
+        jMenu3 = new JMenu();
 
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -38,9 +40,18 @@ public class MainFrame extends JFrame {
 
         jMenu2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jMenu2.setText("Create file");
+        jMenu2.addMenuListener(new NewFileMenuListener());
         jMenuBar1.add(jMenu2);
 
+        jMenu3.setBorder(BorderFactory.createEtchedBorder());
+        jMenu3.setText("Add category");
+        jMenu3.addMenuListener(new CategoryMenuListener());
+        jMenu3.setEnabled(false);
+        jMenuBar1.add(jMenu3);
         setJMenuBar(jMenuBar1);
+        JPanel panel = new JPanel();
+        panel.add(new JLabel("Choose existing or create new database"));
+        setContentPane(panel);
         revalidate();
         repaint();
     }
@@ -48,5 +59,5 @@ public class MainFrame extends JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    JPanel kk1;
+    static JMenu jMenu3;
 }
