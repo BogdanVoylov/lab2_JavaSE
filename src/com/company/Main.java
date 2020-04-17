@@ -1,5 +1,6 @@
 package com.company;
 import java.io.*;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -20,6 +21,11 @@ public class Main {
         mainFrame = new MainFrame();
         mainFrame.setVisible(true);
         mainFrame.setSize(800,600);
+//        List<Group> groupArray = new ArrayList<Group>();
+//        for(int i = 0; i<20; i++){
+//            groupArray.add(new Group("Vasya", "C:\\Users\\Lenovo\\Desktop\\grechka.jpg"));
+//        }
+//        MultipleGroupsReaderWriter.overwriteGroups(new File("C:\\Users\\Lenovo\\Desktop\\test.dat"), groupArray);
 //        ArrayList<Group> ar = new ArrayList<Group>();
 //        ar.add(new Group("Dima", "C:\\Users\\Lenovo\\Desktop\\grechka.jpg"));
 //        ar.add(new Group("Dima", "C:\\Users\\Lenovo\\Desktop\\grechka.jpg"));
