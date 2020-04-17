@@ -42,6 +42,14 @@ public class Group implements Serializable {
         return products.iterator();
     }
 
+    public IStatisticsProvider getStatisticsProvider(){
+        return new StatisticsProvider();
+    }
+
+    public IProductSearcher getProductSearcher(){
+        return new Searcher();
+    }
+
 
     private class ProductsModifier implements ISetModifier<Product> {
 

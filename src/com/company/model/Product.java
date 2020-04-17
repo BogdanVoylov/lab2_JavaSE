@@ -2,7 +2,7 @@ package com.company.model;
 
 import java.io.Serializable;
 
-public class Product implements Serializable {
+public class Product extends MultipleGroupsReaderWriter implements Serializable {
     private String name;
 
     public String getDescription() {
