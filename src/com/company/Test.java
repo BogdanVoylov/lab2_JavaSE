@@ -13,6 +13,7 @@ import java.util.List;
 public class Test {
     public static void main(String[] args) throws Exception {
         List<Group> groupList = new ArrayList<>();
+<<<<<<< HEAD
         Group group = new Group("fruits", ImageIO.read(new File("C:\\Users\\Lenovo\\Desktop\\test.dat")));
         group.getProductsModifier().add(new Product("apple", "", 10, 10));
         groupList.add(group);
@@ -23,5 +24,13 @@ public class Test {
             System.out.println(gr.getImage()
             );
         }
+=======
+        Group group = new Group("fruits", ImageIO.read(new File("static\\fruit.jpg")));
+        group.getProductsModifier().add(new Product("apple","",10,10));
+        groupList.add(group);
+        MultipleGroupsReaderWriter.overwriteGroups(new File("static\\test.dat"),groupList);
+        groupList = MultipleGroupsReaderWriter.readGroups(new File("static\\test.dat"));
+        System.out.println("kk");
+>>>>>>> 7c851108db5b0925a3ec7c01f5d126f6bcf77776
     }
 }
