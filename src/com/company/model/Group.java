@@ -13,9 +13,10 @@ public class Group implements Serializable {
     private HashSet<Product> products;
     private BufferedImage image;
 
-    public Group(String name, BufferedImage read) {
+    public Group(String name, BufferedImage image) {
         this.name = name;
         products = new HashSet<Product>();
+        this.image = image;
     }
 
     public String getName() {
@@ -42,11 +43,11 @@ public class Group implements Serializable {
         return products.iterator();
     }
 
-    public IStatisticsProvider getStatisticsProvider(){
+    public IStatisticsProvider getStatisticsProvider() {
         return new StatisticsProvider();
     }
 
-    public IProductSearcher getProductSearcher(){
+    public IProductSearcher getProductSearcher() {
         return new Searcher();
     }
 
