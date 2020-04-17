@@ -13,7 +13,12 @@ public class Group implements Serializable {
     private HashSet<Product> products;
     private BufferedImage image;
 
-    public Group(String name, BufferedImage read) {
+    public Group(String name, BufferedImage image) {
+        this(name);
+        this.image = image;
+    }
+
+    public Group(String name){
         this.name = name;
         products = new HashSet<Product>();
     }
