@@ -89,7 +89,7 @@ public class Group implements Serializable {
         public int getGeneralPriceOfGroup() {
             int res = 0;
             for (Product product : products) {
-                res += product.getPrice() * product.getCount();
+                res += product.getWholePrice();
             }
             return res;
         }
