@@ -1,18 +1,11 @@
 package com.company;
-import javax.imageio.ImageIO;
-import java.io.File;
+
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
-
 import com.company.model.Group;
-import com.company.model.MultipleGroupsReaderWriter;
-import com.company.model.Product;
 import com.company.view.MainFrame;
-import com.company.view.ObjectsPannel;
-
-import javax.imageio.ImageIO;
 import javax.swing.*;
+
 
 public class Main {
 
