@@ -8,10 +8,8 @@ import javax.swing.event.TableModelListener;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableCellRenderer;
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.HashSet;
+import java.util.*;
 import java.util.List;
-import java.util.Set;
 
 public class EditableTableModel extends AbstractTableModel {
 
@@ -23,6 +21,7 @@ public class EditableTableModel extends AbstractTableModel {
     public EditableTableModel(HashSet<Product> products) {
         this.products = new ArrayList<Product>();
         this.products.addAll(products);
+        this.products.sort(Comparator.comparing(Product::getName));
         updatedHashSet = products;
     }
 

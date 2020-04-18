@@ -25,8 +25,9 @@ public class Product extends MultipleGroupsReaderWriter implements Serializable 
 
     private int price;
     private int count;
+
     public Product(String name, String description, int price, int count) throws Exception {
-        if(count < 0 || price < 0){
+        if (count < 0 || price < 0) {
             throw new Exception();
         }
         this.name = name;
@@ -47,8 +48,8 @@ public class Product extends MultipleGroupsReaderWriter implements Serializable 
         return price;
     }
 
-    public int getWholePrice(){
-        return price*count;
+    public int getWholePrice() {
+        return price * count;
     }
 
     public void setPrice(int price) {
@@ -63,5 +64,10 @@ public class Product extends MultipleGroupsReaderWriter implements Serializable 
     @Override
     public int hashCode() {
         return name.hashCode();
+    }
+
+    @Override
+    public String toString() {
+        return name + " - " + count;
     }
 }

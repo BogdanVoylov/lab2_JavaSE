@@ -188,12 +188,23 @@ public class Form extends JFrame {
                         "Adding a product", JOptionPane.OK_CANCEL_OPTION);
                 if (result == JOptionPane.OK_OPTION) {
                     try {
-                        model.addProduct(cardObj.nameField.getText(), cardObj.descriptionField.getText(), Integer.parseInt(cardObj.priceField.getText()), Integer.parseInt(cardObj.quantityField.getText()));
+                        boolean found = false;
+                        for (Product p : group.getProducts()) {
+                            if (p.getName().equals(cardObj.nameField.getText())) found = true;
+                        }
+                        if (!found) {
+                            if (cardObj.nameField.getText().matches("\\s*"))
+                                JOptionPane.showMessageDialog(null, "Empty name specified", "Error", JOptionPane.ERROR_MESSAGE);
+                            else
+                                model.addProduct(cardObj.nameField.getText(), cardObj.descriptionField.getText(), Integer.parseInt(cardObj.priceField.getText()), Integer.parseInt(cardObj.quantityField.getText()));
+                        } else
+                            JOptionPane.showMessageDialog(null, "Product with this name already exists", "Error", JOptionPane.ERROR_MESSAGE);
                     } catch (Exception ex) {
                         ex.printStackTrace();
                     }
                 }
                 table.revalidate();
+                table.repaint();
             }
         });
     }

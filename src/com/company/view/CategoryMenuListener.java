@@ -104,15 +104,7 @@ public class CategoryMenuListener implements MenuListener {
             } catch (IOException | ClassNotFoundException ex) {
                 ex.printStackTrace();
             }
-            ObjectsPannel kk = null;
-            try {
-                kk = new ObjectsPannel(Main.groups);
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
-            Main.mainFrame.setContentPane(kk);
-            Main.mainFrame.revalidate();
-            Main.mainFrame.repaint();
+            ObjectsPannel.reloadObjectPanel(Main.groups);
         }
     }
 

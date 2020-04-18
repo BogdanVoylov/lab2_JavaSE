@@ -1,13 +1,8 @@
 package com.company.view;
 
-import com.company.Main;
-import com.company.model.Group;
-
 import javax.swing.*;
-import javax.swing.event.MenuListener;
 import java.awt.*;
 import java.io.IOException;
-import java.util.ArrayList;
 
 public class MainFrame extends JFrame {
     public MainFrame() throws IOException {
@@ -21,6 +16,8 @@ public class MainFrame extends JFrame {
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
         jMenu3 = new JMenu();
+        jMenu4 = new JMenu();
+        jMenu5 = new JMenu();
 
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -35,7 +32,6 @@ public class MainFrame extends JFrame {
         jMenu1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jMenu1.setText("Open file");
         jMenu1.addMenuListener(new CustomMenuListener());
-        jMenu1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jMenuBar1.add(jMenu1);
 
         jMenu2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -48,6 +44,19 @@ public class MainFrame extends JFrame {
         jMenu3.addMenuListener(new CategoryMenuListener());
         jMenu3.setEnabled(false);
         jMenuBar1.add(jMenu3);
+
+        jMenu4.setBorder(BorderFactory.createEtchedBorder());
+        jMenu4.setText("Write off");
+        jMenu4.addMenuListener(new WriteOffMenuListener());
+        jMenu4.setEnabled(false);
+        jMenuBar1.add(jMenu4);
+
+        jMenu5.setBorder(BorderFactory.createEtchedBorder());
+        jMenu5.setText("Statistics");
+        jMenu5.addMenuListener(new StatisticsMenuListener());
+        jMenu5.setEnabled(false);
+        jMenuBar1.add(jMenu5);
+
         setJMenuBar(jMenuBar1);
         JPanel panel = new JPanel();
         panel.add(new JLabel("Choose existing or create new database"));
@@ -60,4 +69,6 @@ public class MainFrame extends JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     static JMenu jMenu3;
+    static JMenu jMenu4;
+    static JMenu jMenu5;
 }
