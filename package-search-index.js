@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"com.company"},{"l":"com.company.model"},{"l":"com.company.view"},{"l":"com.company.view.TableClasses"}]
