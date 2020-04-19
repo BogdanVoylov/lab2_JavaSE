@@ -95,11 +95,19 @@ public class CategoryMenuListener implements MenuListener {
                 "Adding a category", JOptionPane.OK_CANCEL_OPTION);
         if (result == JOptionPane.OK_OPTION) {
             try {
-                Group group = new Group(categoryCard.nameField.getText(), ImageIO.read(categoryCard.photo));
-                List<Group> l = new ArrayList<Group>();
-                l.add(group);
-                MultipleGroupsReaderWriter.appendGroups(new File(Main.filepath), l );
-                Main.groups = (ArrayList<Group>) MultipleGroupsReaderWriter.readGroups(new File(Main.filepath));
+                boolean found = false;
+                for (Group g : Main.groups)
+                    if (g.getName().equals(categoryCard.nameField.getText())) found = true;
+
+                if (!found && !categoryCard.nameField.getName().matches("\\s*")) {
+                    Group group = new Group(categoryCard.nameField.getText(), ImageIO.read(categoryCard.photo));
+                    List<Group> l = new ArrayList<Group>();
+                    l.add(group);
+                    MultipleGroupsReaderWriter.appendGroups(new File(Main.filepath), l);
+                    Main.groups = (ArrayList<Group>) MultipleGroupsReaderWriter.readGroups(new File(Main.filepath));
+                } else {
+                    JOptionPane.showMessageDialog(null, "Wrong name specified", "Error", JOptionPane.ERROR_MESSAGE);
+                }
             } catch (IOException | ClassNotFoundException ex) {
                 ex.printStackTrace();
             }
