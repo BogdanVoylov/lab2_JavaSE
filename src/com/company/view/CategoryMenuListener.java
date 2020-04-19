@@ -32,7 +32,7 @@ public class CategoryMenuListener implements MenuListener {
                 JTextField nameField;
                 JLabel nameLabel;
                 JPanel panel = new JPanel();
-                photo = new File("C:\\Program Files\\JetBrains\\IntelliJ IDEA 2019.2.4\\Lab2\\static\\notfound.jpg");
+                photo = new File("static/notfound.jpg");
 
                 nameLabel = new javax.swing.JLabel();
                 nameField = new javax.swing.JTextField();
