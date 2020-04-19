@@ -17,10 +17,5 @@ public class Main {
         mainFrame = new MainFrame();
         mainFrame.setVisible(true);
         mainFrame.setSize(800,600);
-//        List<Group> groupArray = new ArrayList<Group>();
-//        for(int i = 0; i<20; i++){
-//            groupArray.add(new Group("Vasya", ImageIO.read(new File("C:\\Users\\Lenovo\\Desktop\\grechka.jpg"))));
-//        }
-//        MultipleGroupsReaderWriter.overwriteGroups(new File("C:\\Users\\Lenovo\\Desktop\\test.dat"), groupArray);
     }
 }
