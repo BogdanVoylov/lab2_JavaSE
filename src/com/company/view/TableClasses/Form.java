@@ -218,7 +218,6 @@ public class Form extends JFrame {
         Random rnd = new Random();
         EditableTableModel editableTableModel = new EditableTableModel(products);
         table = new JTable(editableTableModel);
-        System.out.println(products);
         table.setSelectionBackground(new Color(250, 120, 148, 50));
         sorter = new TableRowSorter<EditableTableModel>(editableTableModel);
         table.setRowSorter(sorter);
@@ -242,7 +241,6 @@ public class Form extends JFrame {
     }
 
     private void newFilter() {
-        System.out.println("lol");
         RowFilter<EditableTableModel, Object> rf = null;
         //If current expression doesn't parse, don't update.
         try {
