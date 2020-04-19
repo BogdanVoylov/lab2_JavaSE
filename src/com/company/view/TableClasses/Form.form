@@ -32,6 +32,10 @@
           </component>
         </children>
       </grid>
+      <component id="890f5" class="javax.swing.JTextField" binding="searchField">
+        <constraints border-constraint="North"/>
+        <properties/>
+      </component>
     </children>
   </grid>
 </form>

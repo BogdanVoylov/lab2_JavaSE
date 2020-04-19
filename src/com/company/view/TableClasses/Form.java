@@ -6,9 +6,12 @@ import com.company.model.MultipleGroupsReaderWriter;
 import com.company.model.Product;
 
 import javax.swing.*;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -28,6 +31,8 @@ public class Form extends JFrame {
     private JButton addBtn;
     private JButton removeBtn;
     private JButton saveButton;
+    private JTextField searchField;
+    private TableRowSorter sorter;
     private JTable table;
 
     class AddCard {
@@ -211,11 +216,41 @@ public class Form extends JFrame {
 
     private void initComponents(HashSet<Product> products) throws Exception {
         Random rnd = new Random();
-        table = new JTable(new EditableTableModel(products));
+        EditableTableModel editableTableModel = new EditableTableModel(products);
+        table = new JTable(editableTableModel);
+        System.out.println(products);
         table.setSelectionBackground(new Color(250, 120, 148, 50));
+        sorter = new TableRowSorter<EditableTableModel>(editableTableModel);
+        table.setRowSorter(sorter);
         JScrollPane scrollPane = new JScrollPane(table);
         MainPanel.add(scrollPane);
+        searchField.getDocument().addDocumentListener(new DocumentListener() {
+            public void changedUpdate(DocumentEvent e) {
+                warn();
+            }
+            public void removeUpdate(DocumentEvent e) {
+                warn();
+            }
+            public void insertUpdate(DocumentEvent e) {
+                warn();
+            }
 
+            public void warn() {
+                newFilter();
+            }
+        });
+    }
+
+    private void newFilter() {
+        System.out.println("lol");
+        RowFilter<EditableTableModel, Object> rf = null;
+        //If current expression doesn't parse, don't update.
+        try {
+            rf = RowFilter.regexFilter("^.*"+searchField.getText()+".*$", 0);
+        } catch (java.util.regex.PatternSyntaxException e) {
+            return;
+        }
+        sorter.setRowFilter(rf);
     }
 
 }

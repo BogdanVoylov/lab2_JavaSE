@@ -99,7 +99,7 @@ public class CategoryMenuListener implements MenuListener {
                 for (Group g : Main.groups)
                     if (g.getName().equals(categoryCard.nameField.getText())) found = true;
 
-                if (!found && !categoryCard.nameField.getName().matches("\\s*")) {
+                if (!found && !categoryCard.nameField.getText().matches("\\s*")) {
                     Group group = new Group(categoryCard.nameField.getText(), ImageIO.read(categoryCard.photo));
                     List<Group> l = new ArrayList<Group>();
                     l.add(group);
